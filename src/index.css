@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --white: #FFF;
+        --blue010: #E1F5FF;
+        --blue020: #B2E5FF;
+        --blue030: #7DD5FF;
+        --blue040: #44C4FF;
+        --blue050: #00B0FF;
+        --blue060: #00AAFE;
+        --blue070: #009BEF;
+        --blue080: #0088DA;
+        --coral010: #FFEEF1;
+        --coral020: #FFD5D9;
+        --coral030: #FBA8A5;
+        --coral040: #F28882;
+        --coral050: #FF6F61;
+        --coral060: #FF6247;
+        --coral070: #F75B48;
+        --coral080: #E45141;
+        --navy050: #0069FF;
+        --navy060: #1B56EC;
+        --red050: #FF2C51;
+        --yellow050: #FFF028;
+        --yellow060: #FFD324;
+        --socarBusiness050: #00469D;
+        --socarPlan050: #FFC400;
+        --socarPlus050: #006DDF;
+        --grey005: #FEFEFE;
+        --grey010: #FDFDFD;
+        --grey020: #F7F8F9;
+        --grey030: #E9EBEE;
+        --grey040: #C5C8CE;
+        --grey050: #646F7C;
+        --grey060: #374553;
+        --grey070: #28323C;
+        --grey080: #161D24;
+        --backgroundBase: var(--white);
+        --backgroundElevated: var(--white);
+        --backgroundGroupedContent: var(--white);
+        --backgroundGroupedBase: var(--grey020);
+        --thick: color-mix(in srgb, var(--grey080), transparent 75%);
+        --basic: color-mix(in srgb, var(--grey080), transparent 50%);
+        --thin: color-mix(in srgb, var(--grey080), transparent 15%);
+        --pressed: rgba(255, 255, 255, 0.15);
+        --borderBasic: var(--grey030);
+        --borderBasic2: var(--grey030);
+        --shadowBasic: color-mix(in srgb, var(--grey070), transparent 25%);
+        --shadowThin: color-mix(in srgb, var(--grey070), transparent 10%);
+        --textPrimary: var(--grey060);
+        --textSecondary: var(--grey050);
+        --disablePlaceholder: var(--grey040);
+    }
+    @font-face {
+        font-family: 'SpoqaHanSansNeo-Regular';
+        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SpoqaHanSansNeo-Regular.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+    }
+}
