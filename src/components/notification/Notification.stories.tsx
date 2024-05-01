@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { fn } from '@storybook/test'
-import { Button } from './Button.tsx'
-import { ButtonColor } from '../const.ts'
+import { NotificationColor } from '../const.ts'
+import { Notification } from './Notification.tsx'
+import { Bell, MessageSquareMore } from 'lucide-react'
 
 const meta = {
-  title: 'Socar/Button',
-  component: Button,
+  title: 'Socar/Notification',
+  component: Notification,
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
     // layout: 'centered',
@@ -15,12 +15,12 @@ const meta = {
   // More on argTypes: https://storybook.js.org/docs/api/argtypes
   argTypes: {
     color: {
-      options: Object.keys(ButtonColor),
+      options: Object.keys(NotificationColor),
       control: { type: 'select' },
     },
   },
   // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#action-args
-  args: { onClick: fn() },
+  args: {},
   decorators: [
     (Story) => (
       <div className={'m-1'}>
@@ -28,35 +28,22 @@ const meta = {
       </div>
     ),
   ],
-} satisfies Meta<typeof Button>
+} satisfies Meta<typeof Notification>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const largeFill: Story = {
+export const primary: Story = {
   args: {
-    text: 'Button',
-    type: 'largeFill',
-    color: ButtonColor.blue,
-    disabled: false,
+    color: NotificationColor.blue,
+    children: <Bell />,
   },
 }
 
-export const largeFillLoading: Story = {
+export const numbers: Story = {
   args: {
-    text: 'Button',
-    type: 'largeFill',
-    color: ButtonColor.blue,
-    loading: true,
-  },
-}
-
-export const largeFillCustom: Story = {
-  args: {
-    text: 'Button',
-    type: 'largeFill',
-    color: ButtonColor.blue,
-    disabled: false,
-    className: 'bg-coral080',
+    color: NotificationColor.coral,
+    text: '99+',
+    children: <MessageSquareMore />,
   },
 }

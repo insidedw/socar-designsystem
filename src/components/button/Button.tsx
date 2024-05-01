@@ -1,8 +1,9 @@
-import { ButtonType } from './const.ts'
-import { Color } from '../const.ts'
+import { AllowedToShowLoadingButtonType, ButtonType } from './const.ts'
+import { ButtonColor } from '../const.ts'
 import { clsx } from 'clsx'
 import { cva } from 'class-variance-authority'
 import React from 'react'
+import { Loading } from '../loading'
 
 const buttonVariants = cva('inline-block active:opacity-85 relative', {
   variants: {
@@ -19,9 +20,9 @@ const buttonVariants = cva('inline-block active:opacity-85 relative', {
       smallText: 'p-2 h-8 text-[14px] socar-regular font-normal w-auto',
     },
     color: {
-      [Color.blue]: '',
-      [Color.grey]: '',
-      [Color.coral]: '',
+      [ButtonColor.blue]: '',
+      [ButtonColor.grey]: '',
+      [ButtonColor.coral]: '',
     },
   },
   compoundVariants: [
@@ -47,77 +48,77 @@ const buttonVariants = cva('inline-block active:opacity-85 relative', {
     },
     {
       type: 'largeFill',
-      color: [Color.blue],
+      color: [ButtonColor.blue],
       class: 'text-white bg-blue050',
     },
     {
       type: 'largeFill',
-      color: [Color.grey],
+      color: [ButtonColor.grey],
       class: 'text-white bg-grey060',
     },
     {
       type: 'largeFill',
-      color: [Color.coral],
+      color: [ButtonColor.coral],
       class: 'text-white bg-coral050',
     },
     {
       type: 'regularFill',
-      color: [Color.blue],
+      color: [ButtonColor.blue],
       class: 'text-white bg-blue050',
     },
     {
       type: 'regularFill',
-      color: [Color.grey],
+      color: [ButtonColor.grey],
       class: 'text-white bg-grey060',
     },
     {
       type: 'regularFill',
-      color: [Color.coral],
+      color: [ButtonColor.coral],
       class: 'text-white bg-coral050',
     },
     {
       type: 'regularLine',
-      color: [Color.blue],
+      color: [ButtonColor.blue],
       class: 'text-blue050 bg-white',
     },
     {
       type: 'regularLine',
-      color: [Color.grey],
+      color: [ButtonColor.grey],
       class: 'text-grey060 bg-white',
     },
     {
       type: 'regularLine',
-      color: [Color.coral],
+      color: [ButtonColor.coral],
       class: 'text-coral050 bg-white',
     },
     {
       type: 'smallLine',
-      color: [Color.blue],
+      color: [ButtonColor.blue],
       class: 'text-blue050 bg-white',
     },
     {
       type: 'smallLine',
-      color: [Color.grey],
+      color: [ButtonColor.grey],
       class: 'text-grey060 bg-white',
     },
     {
       type: 'smallLine',
-      color: [Color.coral],
+      color: [ButtonColor.coral],
       class: 'text-coral050 bg-white',
     },
     {
       type: 'smallText',
-      color: [Color.blue],
+      color: [ButtonColor.blue],
       class: 'text-blue050 bg-white',
     },
     {
       type: 'smallText',
-      color: [Color.grey],
+      color: [ButtonColor.grey],
       class: 'text-grey060 bg-white',
     },
     {
       type: 'smallText',
-      color: [Color.coral],
+      color: [ButtonColor.coral],
       class: 'text-coral050 bg-white',
     },
   ],
@@ -128,7 +129,7 @@ interface Props {
   iconFront?: string
   iconRear?: string
   type: ButtonType
-  color: Color
+  color: ButtonColor
   disabled?: boolean
   loading?: boolean
   onClick?: () => void
@@ -150,17 +151,10 @@ export const Button = ({
 }: Props) => {
   const className = clsx(buttonVariants({ type, color, disabled }), classNameProp)
 
+  const showLoading = loading && AllowedToShowLoadingButtonType.includes(type)
   return React.createElement(
     tagName,
     { onClick, href, className },
-    loading ? (
-      <div className="">
-        <span className={'before:contents'} />
-        <span />
-        <span />
-      </div>
-    ) : (
-      text
-    ),
+    showLoading ? <Loading className={type === 'regularLine' ? 'bg-grey030' : undefined} /> : text,
   )
 }
